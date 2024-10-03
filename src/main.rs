@@ -14,7 +14,7 @@ fn main() -> anyhow::Result<()> {
 
     const ITERS: usize = 100000;
 
-    let mut model = Model::<Backend>::init(&Default::default());
+    let mut model = Model::<Backend>::init(&Default::default()); // .no_grad();
     let mut optimizer = AdamConfig::new().init::<Backend, Model<Backend>>();
 
     let input =
