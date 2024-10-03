@@ -14,13 +14,15 @@ fn main() -> anyhow::Result<()> {
 
     const ITERS: usize = 100000;
 
-    let mut model = Model::<Backend>::init(&Default::default()); // .no_grad();
+    let mut model = Model::<Backend>::init(&Default::default());
     let mut optimizer = AdamConfig::new().init::<Backend, Model<Backend>>();
 
     let input =
-        Tensor::<Backend, 1>::random([256], Distribution::Normal(0.0, 1.0), &Default::default());
+        Tensor::<Backend, 1>::random([256], Distribution::Normal(0.0, 1.0), &Default::default())
+            .set_require_grad(false);
     let target =
-        Tensor::<Backend, 1>::random([2], Distribution::Normal(0.0, 1.0), &Default::default());
+        Tensor::<Backend, 1>::random([2], Distribution::Normal(0.0, 1.0), &Default::default())
+            .set_require_grad(false);
 
     let mut bar = tqdm!(total = ITERS);
     for _ in 0..ITERS {

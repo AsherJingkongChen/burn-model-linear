@@ -1,10 +1,11 @@
 # Linear transform in Burn
 
-## Description
+## Features
 
-* Two layers of transformation
-* 1D input
-* 1D output
+* Auto-differentiation on `ndarray` backend
+* Parameter optimization with Adam
+* Two layers of linear transformation
+* 1D input, 1D output
 
 ## Notes
 
