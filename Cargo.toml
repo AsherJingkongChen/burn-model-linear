@@ -5,8 +5,8 @@ version = "0.0.0"
 
 [dependencies.burn]
 default-features = false
-# features = ["autodiff", "default", "wgpu", "ndarray"]
-features = ["autodiff", "default", "ndarray"]
+features = ["autodiff", "default", "wgpu", "ndarray"]
+# features = ["autodiff", "default", "ndarray"]
 git = "https://github.com/tracel-ai/burn"
 rev = "dce55657bed85fa4f73fd1a547f8172a119e73dc"
 
@@ -15,3 +15,6 @@ anyhow = {version = "1.0.89", default-features = false, features = ["std"]}
 kdam = {version = "0.5.2", default-features = false}
 log = {version = "0.4.22", default-features = false}
 pretty_env_logger = {version = "0.5.0", default-features = false}
+
+[profile.release]
+debug = true

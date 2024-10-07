@@ -8,8 +8,8 @@ use burn::{
 use kdam::{tqdm, BarExt};
 
 fn main() -> anyhow::Result<()> {
-    // type Backend = Autodiff<backend::wgpu::JitBackend<backend::wgpu::WgpuRuntime, f32, i32>>;
-    type Backend = Autodiff<backend::NdArray<f32, i8>>;
+    type Backend = Autodiff<backend::wgpu::JitBackend<backend::wgpu::WgpuRuntime, f32, i32>>;
+    // type Backend = Autodiff<backend::NdArray<f32, i8>>;
     Backend::seed(1);
 
     const ITERS: usize = 100000;
@@ -18,7 +18,7 @@ fn main() -> anyhow::Result<()> {
     let mut optimizer = AdamConfig::new().init::<Backend, Model<Backend>>();
 
     let input =
-        Tensor::<Backend, 1>::random([256], Distribution::Normal(0.0, 1.0), &Default::default())
+        Tensor::<Backend, 1>::random([16], Distribution::Normal(0.0, 1.0), &Default::default())
             .set_require_grad(false);
     let target =
         Tensor::<Backend, 1>::random([2], Distribution::Normal(0.0, 1.0), &Default::default())
@@ -52,8 +52,8 @@ pub struct Model<B: Backend> {
 impl<B: Backend> Model<B> {
     pub fn init(device: &B::Device) -> Self {
         Self {
-            l1: LinearConfig::new(256, 256).init(device),
-            l2: LinearConfig::new(256, 2).init(device),
+            l1: LinearConfig::new(16, 16).init(device),
+            l2: LinearConfig::new(16, 2).init(device),
         }
     }
 
