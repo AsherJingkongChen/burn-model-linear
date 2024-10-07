@@ -8,14 +8,15 @@ use burn::{
 use kdam::{tqdm, BarExt};
 
 fn main() -> anyhow::Result<()> {
-    type Backend = Autodiff<backend::wgpu::JitBackend<backend::wgpu::WgpuRuntime, f32, i32>>;
+    type Backend = backend::wgpu::JitBackend<backend::wgpu::WgpuRuntime, f32, i32>;
+    // type Backend = Autodiff<backend::wgpu::JitBackend<backend::wgpu::WgpuRuntime, f32, i32>>;
     // type Backend = Autodiff<backend::NdArray<f32, i8>>;
     Backend::seed(1);
 
     const ITERS: usize = 100000;
 
     let mut model = Model::<Backend>::init(&Default::default());
-    let mut optimizer = AdamConfig::new().init::<Backend, Model<Backend>>();
+    // let mut optimizer = AdamConfig::new().init::<Backend, Model<Backend>>();
 
     let input =
         Tensor::<Backend, 1>::random([16], Distribution::Normal(0.0, 1.0), &Default::default())
@@ -28,17 +29,17 @@ fn main() -> anyhow::Result<()> {
     for _ in 0..ITERS {
         let output = model.forward(input.clone());
         let loss = get_loss_mse(output, target.clone());
-        let grads = GradientsParams::from_grads(loss.backward(), &model);
+        // let grads = GradientsParams::from_grads(loss.backward(), &model);
 
-        model = optimizer.step(5e-5, model, grads);
+        // model = optimizer.step(5e-5, model, grads);
 
         let _ = bar.update(1);
     }
 
-    let model = model.valid();
-    let output = model.forward(input.inner());
-    let loss = get_loss_mse(output, target.inner());
-    println!("loss: {:?}", loss.into_scalar());
+    // let model = model.valid();
+    // let output = model.forward(input.inner());
+    // let loss = get_loss_mse(output, target.inner());
+    // println!("loss: {:?}", loss.into_scalar());
 
     Ok(())
 }
