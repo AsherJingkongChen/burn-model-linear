@@ -105,7 +105,7 @@ version = "0.38.0+1.3.281"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0bb44936d800fea8f016d7f2311c6a4f97aebd5dc86f09906139ec848cf3a46f"
 dependencies = [
- "libloading",
+ "libloading 0.8.5",
 ]
 
 [[package]]
@@ -993,7 +993,7 @@ version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "38cd60a9a42ec83a2ed7effb0b1f073270264ea99da7acfc44f7e8d74dee0384"
 dependencies = [
- "libloading",
+ "libloading 0.8.5",
 ]
 
 [[package]]
@@ -1003,7 +1003,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bdbd1f579714e3c809ebd822c81ef148b1ceaeb3d535352afc73fd0c4c6a0017"
 dependencies = [
  "bitflags 2.6.0",
- "libloading",
+ "libloading 0.7.4",
  "winapi",
 ]
 
@@ -1698,7 +1698,7 @@ dependencies = [
  "bitflags 2.6.0",
  "com",
  "libc",
- "libloading",
+ "libloading 0.8.5",
  "thiserror",
  "widestring",
  "winapi",
@@ -1910,7 +1910,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6aae1df220ece3c0ada96b8153459b67eebe9ae9212258bb0134ae60416fdf76"
 dependencies = [
  "libc",
- "libloading",
+ "libloading 0.8.5",
  "pkg-config",
 ]
 
@@ -1947,6 +1947,16 @@ dependencies = [
  "arbitrary",
  "cc",
  "once_cell",
+]
+
+[[package]]
+name = "libloading"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b67380fd3b2fbe7527a606e18729d21c6f3951633d0500574c4dc22d2d638b9f"
+dependencies = [
+ "cfg-if",
+ "winapi",
 ]
 
 [[package]]
@@ -2351,7 +2361,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0c9bff0aa1d48904a1385ea2a8b97576fbdcbc9a3cfccd0d31fe978e1c4038c5"
 dependencies = [
  "bitflags 2.6.0",
- "libloading",
+ "libloading 0.8.5",
  "nvml-wrapper-sys",
  "static_assertions",
  "thiserror",
@@ -2364,7 +2374,7 @@ version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "698d45156f28781a4e79652b6ebe2eaa0589057d588d3aec1333f6466f13fcb5"
 dependencies = [
- "libloading",
+ "libloading 0.8.5",
 ]
 
 [[package]]
@@ -3953,7 +3963,7 @@ dependencies = [
  "js-sys",
  "khronos-egl",
  "libc",
- "libloading",
+ "libloading 0.7.4",
  "log",
  "metal",
  "naga",

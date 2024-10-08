@@ -8,7 +8,7 @@ use burn::{
 use kdam::{tqdm, BarExt};
 
 fn main() -> anyhow::Result<()> {
-    type Backend = Autodiff<backend::NdArray<f32, i8>>;
+    type Backend = Autodiff<backend::NdArray>;
     Backend::seed(1);
 
     const ITERS: usize = 100000;
