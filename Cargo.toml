@@ -7,7 +7,8 @@ version = "0.0.0"
 default-features = false
 features = ["autodiff", "default", "wgpu", "ndarray"]
 git = "https://github.com/tracel-ai/burn"
-rev = "dce55657bed85fa4f73fd1a547f8172a119e73dc"
+rev = "dce55657bed85fa4f73fd1a547f8172a119e73dc" # The parent of PR 2347
+# rev = "584dbdbd5d000fa18bab5e1af05ce060a0bb8c41" # PR 2347
 
 [dependencies]
 anyhow = {version = "1.0.89", default-features = false, features = ["std"]}
@@ -33,3 +34,7 @@ path = "src/wgpu_ad_true.rs"
 
 [profile.dev]
 opt-level = 0
+
+[profile.release]
+opt-level = 3
+debug = true
